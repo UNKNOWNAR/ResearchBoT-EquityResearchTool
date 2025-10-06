@@ -1,0 +1,23 @@
+# Core web framework
+streamlit==1.35.0
+
+# LangChain ecosystem
+langchain==0.2.5
+langchain-core==0.2.9
+langchain-community==0.2.4
+langchain-google-genai==1.0.5
+langchain-huggingface==0.0.3
+langchain-text-splitters==0.2.1
+
+# Document loading and processing
+unstructured==0.12.6
+beautifulsoup4==4.12.3
+lxml==5.1.0
+python-magic-bin==0.4.14
+
+# Vector store & Embeddings
+faiss-cpu==1.8.0
+sentence-transformers==2.7.0
+
+# Environment variables
+python-dotenv==1.0.1
