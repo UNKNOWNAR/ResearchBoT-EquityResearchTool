@@ -1,91 +1,97 @@
-# 🧠 ResearchBot: News Research Tool  
+ResearchBot: AI-Powered News Research Tool 📈
+RockyBot is a powerful, interactive Streamlit application designed to streamline news research. It leverages a modern AI stack, including Google's Gemini models and LangChain, to allow users to input news article URLs, process their content, and ask questions in natural language to receive accurate, source-cited answers.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[GitHub Repo](https://github.com/UNKNOWNAR/ResearchBotBot-EquityResearchTool.git)  
+🚀 Features
+Web-Based UI: Simple and intuitive interface built with Streamlit.
 
-**ResearchBot** is an AI-powered tool for **news and equity research**, allowing you to fetch, embed, index, and query articles — especially in financial and stock market domains.  
+Dynamic Data Ingestion: Process up to three news article URLs simultaneously.
 
----
+Automated Content Scraping: Uses LangChain's WebBaseLoader to efficiently fetch article content.
 
-## 🚀 Features  
+Intelligent Text Chunking: Employs RecursiveCharacterTextSplitter to break down articles into manageable chunks for analysis.
 
-- **URL & File Input**: Enter up to 3 article URLs or upload `.txt` files containing multiple links.  
-- **Automated Fetching**: Uses LangChain’s `WebBaseLoader` / UnstructuredURL loader to fetch article content.  
-- **Text Processing & Splitting**: Breaks down long articles into manageable chunks.  
-- **Semantic Embeddings**: Uses OpenAI’s embeddings to convert text into dense vectors.  
-- **Efficient Retrieval**: Stores vectors in **FAISS** for fast similarity search.  
-- **Conversational Q&A**: Ask natural-language questions and get answers with **source URLs** for validation.  
+Advanced Embeddings: Leverages HuggingFace's all-MiniLM-L6-v2 model to create meaningful vector embeddings.
 
----
+High-Speed Retrieval: Uses FAISS (Facebook AI Similarity Search) to create a local vector store for lightning-fast information retrieval.
 
-## 🛠️ Installation & Setup  
+Generative Q&A: Powered by Google's gemini-2.5-flash model to provide concise answers based on the provided articles.
 
-Clone the repo:
+Source Citation: Automatically lists the source URLs used to generate an answer, ensuring transparency and verifiability.
 
-```bash
-git clone https://github.com/UNKNOWNAR/ResearchBotBot-EquityResearchTool.git
-Change into the project directory:
+🛠️ Tech Stack & Architecture
+The application is built on a robust, modern AI stack designed for efficient retrieval-augmented generation (RAG).
 
-bash
-Copy code
-cd ResearchBotBot-EquityResearchTool
-Install required packages:
+Data Ingestion & Processing
+Question & Answering
+📦 Setup & Installation
+Follow these steps to get RockyBot running on your local machine.
 
-bash
-Copy code
+Prerequisites
+Python 3.8+
+
+Git
+
+1. Clone the Repository
+Bash
+
+git clone <your-repository-url>
+cd RockyBot-News-Research
+2. Create and Activate a Virtual Environment
+It is highly recommended to use a virtual environment to manage project dependencies.
+
+Bash
+
+# For Windows
+python -m venv venv
+venv\Scripts\activate
+
+# For macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+3. Install Dependencies
+Install all the required Python packages using the 
+
+requirements.txt file. 
+
+Bash
+
 pip install -r requirements.txt
-Add your OpenAI API key:
+4. Set Up Environment Variables
+You'll need a Google API key to use the Gemini model.
 
-Create a .env file at the root.
+Create a new file named .env in the root of the project directory.
 
-Add the following line:
+Add your Google API key to the .env file:
 
-ini
-Copy code
-OPENAI_API_KEY=your_api_key_here
-▶️ Usage / Example
-Launch the app with:
+Code snippet
 
-bash
-Copy code
+GOOGLE_API_KEY="your_google_api_key_here"
+▶️ How to Run the Application
+Once the setup is complete, you can launch the Streamlit application with a single command:
+
+Bash
+
 streamlit run main.py
-Then:
+Your web browser should automatically open to the application's UI.
 
-On the sidebar, input URLs or upload a .txt file with URLs.
-
-Click “Process URLs” to fetch, split, embed, and index article content.
-
-Ask your query in the input UI — ResearchBot returns an answer derived from the documents, along with source links.
-
-📁 Project Structure
-bash
-Copy code
-ResearchBotBot-EquityResearchTool/
-├── main.py                      # Streamlit application entry point  
-├── requirements.txt             # Dependencies  
-├── faiss_store_openai.pkl       # Local FAISS index file (after processing)  
-├── .env                         # Environment config (OpenAI key)  
-└── README.md                    # This file  
 🧠 How It Works
-Load & Fetch: Use LangChain to scrape and structure article content.
+Input URLs: The user provides up to three news article URLs in the sidebar.
 
-Split Text: Divide large documents into chunks for embedding.
+Process Data: When the "Process URLs" button is clicked, the application scrapes the content from each URL.
 
-Embed: Convert chunks into vectors via OpenAI embeddings.
+Chunk & Embed: The scraped text is split into smaller, overlapping chunks. Each chunk is then converted into a numerical vector (embedding) using the HuggingFace all-MiniLM-L6-v2 model.
 
-Index & Store: Use FAISS to index vectors for similarity queries.
+Create Vector Store: The embeddings are stored and indexed in a local FAISS vector store, which is saved to the faiss_store_huggingface directory.
 
-Query & Answer: On a question input, retrieve relevant chunks and send them to the LLM to generate an answer, citing sources.
+Ask a Question: The user types a question into the main input box.
 
-💡 Future Enhancements
-Summarization across multiple articles
+Retrieve Relevant Context: The application embeds the user's question and uses FAISS to find the most relevant text chunks from the processed articles.
 
-Sentiment / bias detection
+Generate Answer: The question and the retrieved text chunks are sent to the Google Gemini LLM. The model synthesizes the information to generate a comprehensive answer.
 
-Topic clustering & trend visualization
+Display Results: The final answer and the source URLs of the documents it was based on are displayed to the user.
 
-Support for live news APIs and data feeds
+📜 License
+This project is licensed under the MIT License. See the 
 
-📫 Contributing & Contact
-Feel free to open issues, suggest features, or submit pull requests.
-Connect on LinkedIn or shoot me a message if you want to collaborate.
+LICENSE file for more details. 
