@@ -1,117 +1,91 @@
-# 🧠 ResearchBot: News Research Tool
+# 🧠 ResearchBot: News Research Tool  
 
-**ResearchBot** is a user-friendly, AI-powered news research assistant built for effortless information retrieval and analysis.  
-It allows users to load news article URLs, process content through LangChain, and interact with a conversational AI (ChatGPT) to extract meaningful insights — especially in the **stock market and financial** domains.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
+[GitHub Repo](https://github.com/UNKNOWNAR/ResearchBotBot-EquityResearchTool.git)  
 
----
-
-## 🚀 Features
-
-✅ **URL & File Loading**
-- Load single or multiple article URLs directly.
-- Upload text files containing multiple URLs for batch processing.
-
-✅ **Smart Content Extraction**
-- Uses **LangChain's UnstructuredURL Loader** to fetch and structure article content seamlessly.
-
-✅ **Intelligent Embeddings**
-- Generates semantic embeddings using **OpenAI’s Embeddings API**.
-
-✅ **Efficient Similarity Search**
-- Leverages **FAISS**, a high-performance vector search library, for rapid and accurate retrieval of relevant article segments.
-
-✅ **Conversational Query Interface**
-- Ask questions naturally via **ChatGPT** and receive concise, contextually relevant answers.
-- Each answer includes **source URLs** for transparency and reference.
+**ResearchBot** is an AI-powered tool for **news and equity research**, allowing you to fetch, embed, index, and query articles — especially in financial and stock market domains.  
 
 ---
 
-## 🛠️ Installation
+## 🚀 Features  
 
-### 1️⃣ Clone the repository
+- **URL & File Input**: Enter up to 3 article URLs or upload `.txt` files containing multiple links.  
+- **Automated Fetching**: Uses LangChain’s `WebBaseLoader` / UnstructuredURL loader to fetch article content.  
+- **Text Processing & Splitting**: Breaks down long articles into manageable chunks.  
+- **Semantic Embeddings**: Uses OpenAI’s embeddings to convert text into dense vectors.  
+- **Efficient Retrieval**: Stores vectors in **FAISS** for fast similarity search.  
+- **Conversational Q&A**: Ask natural-language questions and get answers with **source URLs** for validation.  
+
+---
+
+## 🛠️ Installation & Setup  
+
+Clone the repo:
+
 ```bash
-git clone https://github.com/codebasics/langchain.git
-2️⃣ Navigate to the project directory
+git clone https://github.com/UNKNOWNAR/ResearchBotBot-EquityResearchTool.git
+Change into the project directory:
+
 bash
 Copy code
-cd 2_news_research_tool_project
-3️⃣ Install dependencies
+cd ResearchBotBot-EquityResearchTool
+Install required packages:
+
 bash
 Copy code
 pip install -r requirements.txt
-4️⃣ Set up your OpenAI API key
-Create a .env file in the project root and add your key:
+Add your OpenAI API key:
 
-bash
+Create a .env file at the root.
+
+Add the following line:
+
+ini
 Copy code
 OPENAI_API_KEY=your_api_key_here
-▶️ Usage
-Run the Streamlit app:
+▶️ Usage / Example
+Launch the app with:
+
 bash
 Copy code
 streamlit run main.py
-Steps:
-Open the web app (it will launch automatically in your browser).
+Then:
 
-On the sidebar:
+On the sidebar, input URLs or upload a .txt file with URLs.
 
-Enter article URLs manually, or
+Click “Process URLs” to fetch, split, embed, and index article content.
 
-Upload a .txt file containing multiple URLs.
-
-Click “Process URLs” to:
-
-Load and extract article data.
-
-Split text into chunks.
-
-Generate embeddings via OpenAI.
-
-Store them efficiently in FAISS for retrieval.
-
-Once processing completes:
-
-Ask any question related to the articles.
-
-ResearchBot will return context-aware answers with source URLs.
+Ask your query in the input UI — ResearchBot returns an answer derived from the documents, along with source links.
 
 📁 Project Structure
-File	Description
-main.py	The main Streamlit application script.
-requirements.txt	Contains the Python package dependencies.
-faiss_store_openai.pkl	Pickle file to store FAISS index for future use.
-.env	Environment file storing your OpenAI API key.
+bash
+Copy code
+ResearchBotBot-EquityResearchTool/
+├── main.py                      # Streamlit application entry point  
+├── requirements.txt             # Dependencies  
+├── faiss_store_openai.pkl       # Local FAISS index file (after processing)  
+├── .env                         # Environment config (OpenAI key)  
+└── README.md                    # This file  
+🧠 How It Works
+Load & Fetch: Use LangChain to scrape and structure article content.
 
-🧩 Example Articles Used
-Here are some sample URLs used in the demo:
+Split Text: Divide large documents into chunks for embedding.
 
-Tata Motors, Mahindra gain certificates for production-linked payouts
+Embed: Convert chunks into vectors via OpenAI embeddings.
 
-Tata Motors launches Punch iCNG, price starts at Rs 7.1 lakh
+Index & Store: Use FAISS to index vectors for similarity queries.
 
-Buy Tata Motors, target of Rs 743: KR Choksey
-
-🧠 How It Works (High-Level Flow)
-Data Ingestion: Load and extract article content from URLs using LangChain.
-
-Text Processing: Split articles into semantically meaningful chunks.
-
-Vectorization: Convert text chunks into embeddings via OpenAI’s Embeddings API.
-
-Indexing: Store embeddings in FAISS for efficient similarity-based retrieval.
-
-Query & Response: Use ChatGPT to answer user questions based on retrieved contexts, with citations.
+Query & Answer: On a question input, retrieve relevant chunks and send them to the LLM to generate an answer, citing sources.
 
 💡 Future Enhancements
-Multi-domain support (finance, health, tech, etc.)
+Summarization across multiple articles
 
-Integration with live news APIs
+Sentiment / bias detection
 
-Topic-wise article clustering and summaries
+Topic clustering & trend visualization
 
-Multi-modal data ingestion (text, audio, video transcripts)
+Support for live news APIs and data feeds
 
-📬 Connect
-If you found this project interesting or have suggestions for improvement, feel free to connect!
-
-Author: Arinjay Sarkar
+📫 Contributing & Contact
+Feel free to open issues, suggest features, or submit pull requests.
+Connect on LinkedIn or shoot me a message if you want to collaborate.
