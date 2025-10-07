@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- App UI Configuration ---
-st.title("RockyBot: News Research Tool 📈")
+st.title("ResearchBoT: News Research Tool 📈")
 st.sidebar.title("News Article URLs")
 
 urls = []
